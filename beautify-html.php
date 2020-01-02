@@ -524,6 +524,25 @@ class Beautify_Html
             $this->line_char_count++;
             $space = true;
 
+            /**
+             * Assuming Base64 This method could possibly be applied to All Tags 
+             * but Base64 doesn't have " or ' as part of its data
+             * so it is safe to look for the Next delimiter to find the end of the data
+             * instead of reading Each character one at a time.
+             */
+
+            if (preg_match('/^data:image\/(bmp|gif|jpeg|png|svg\+xml|tiff|x-icon);base64$/', $content ))
+            {
+                $content .= substr($this->input, $this->pos, strpos($this->input, $delimiter, $this->pos) - $this->pos);
+               
+                $this->line_char_count = strpos($this->input, $delimiter, $this->pos) - $this->pos;
+                
+                $this->pos = strpos($this->input, $delimiter, $this->pos);
+                
+                continue;
+            }
+
+
         } while ( strpos(strtolower($content), $delimiter, $min_index) === false);
         
         return $content;
@@ -770,7 +789,6 @@ class Beautify_Html
                             $text = preg_replace('/^\s*/', $indentation, $text);
                             $text = preg_replace('/\r\n|\r|\n/', "\n" . $reindent, $text);
                             $text = preg_replace('/\s+$/', '', $text);
-                            //@todo: test
                         }
                         
                         if ($text) {
