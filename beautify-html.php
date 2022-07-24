@@ -34,7 +34,6 @@ class Beautify_Html
     private $options;
     
     private $pos;
-    private $token;
     private $current_mode;
     private $tags;
     private $tag_type;
@@ -67,7 +66,6 @@ class Beautify_Html
         $this->js_beautify = ($js_beautify && is_callable($js_beautify)) ? $js_beautify : false;
         
         $this->pos = 0; //Parser position
-        $this->token = '';
         $this->current_mode = 'CONTENT'; //reflects the current Parser mode: TAG/CONTENT
         
         //An object to hold tags, their position, and their parent-tags, initiated with default values
