@@ -1,5 +1,5 @@
 <?php
-require_once 'beautify-html.php';
+require_once 'src/Beautify_Html.php';
 
 $html = file_get_contents('http://www.google.com/search?q=cats');
 

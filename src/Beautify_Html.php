@@ -29,6 +29,9 @@
  * PHP port by Ivan Weiler, 2014
  * 
  */
+
+namespace Weiler;
+
 class Beautify_Html
 {
     private $options;
