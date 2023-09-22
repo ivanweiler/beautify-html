@@ -1,0 +1,16 @@
+{
+    "name": "weiler/beautify-html",
+    "description": "Indent HTML code, making it beautiful",
+    "autoload": {
+        "psr-4": {
+            "Weiler\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ivan Weiler",
+            "homepage": "https://github.com/ivanweiler"
+        }
+    ]
+}
